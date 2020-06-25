@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Segment } from "semantic-ui-react";
 
-export class LeaderBoard extends Component {
+class LeaderBoard extends Component {
   render() {
     return (
       <Fragment>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Segment } from "semantic-ui-react";
 
-export class NewQuestion extends Component {
+class NewQuestion extends Component {
   render() {
     return (
       <div>
