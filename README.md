@@ -6,7 +6,7 @@ Would You Rather App is a polling game that let users choose answer from two opt
 
 This App is one of the three assessment projects for Udacity's [Udacity's React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
 
-The MyReads App is deployed to Netlify at https://wouldyourather-reactnd.netlify.app/.
+The Would You Rather App is deployed to Netlify at https://wouldyourather-reactnd.netlify.app/.
 
 ## 🏃 Getting Started
 
