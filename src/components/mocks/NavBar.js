@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { withRouter, NavLink } from "react-router-dom";
 import {
   Menu,
   Responsive,
@@ -9,31 +10,18 @@ import {
 } from "semantic-ui-react";
 
 export default class NavBar extends Component {
-  state = { activeItem: "home" };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleLogout = (e) => {
+    e.preventDefault();
+    this.props.onLogout();
+  };
 
   render() {
-    const { activeItem } = this.state;
     return (
       <Container>
         <Responsive as={Menu} minWidth={601} pointing secondary>
-          <Menu.Item
-            name="home"
-            active={activeItem === "home"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="new question"
-            active={activeItem === "new question"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="leader board"
-            active={activeItem === "leader board"}
-            onClick={this.handleItemClick}
-          />
-
+          <Menu.Item name="home" as={NavLink} to="/" exact />
+          <Menu.Item name="new question" as={NavLink} to="/add" />
+          <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
           <Menu.Menu position="right">
             <Menu.Item>
               <span>
@@ -52,6 +40,7 @@ export default class NavBar extends Component {
                 labelPosition="right"
                 basic
                 icon="log out"
+                onClick={this.handleLogout}
               />
             </Menu.Item>
           </Menu.Menu>
@@ -76,26 +65,15 @@ export default class NavBar extends Component {
                   icon="log out"
                   size="tiny"
                   floated="right"
+                  onClick={this.handleLogout}
                 />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Menu pointing secondary widths={3}>
-                <Menu.Item
-                  name="home"
-                  active={activeItem === "home"}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="new question"
-                  active={activeItem === "new question"}
-                  onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                  name="leader board"
-                  active={activeItem === "leader board"}
-                  onClick={this.handleItemClick}
-                />
+                <Menu.Item name="home" as={NavLink} to="/" exact />
+                <Menu.Item name="new question" as={NavLink} to="/add" />
+                <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
               </Menu>
             </Grid.Row>
           </Grid>
