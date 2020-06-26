@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid, Segment, Header, Image } from "semantic-ui-react";
 
-const Question = ({ user, avatar, question }) => (
+const QuestionOverview = ({ user, avatar, question }) => (
   <Segment.Group>
     <Header as="h5" textAlign="left" block attached="top">
       {user} asks:
@@ -29,4 +29,4 @@ const Question = ({ user, avatar, question }) => (
   </Segment.Group>
 );
 
-export default Question;
+export default QuestionOverview;
