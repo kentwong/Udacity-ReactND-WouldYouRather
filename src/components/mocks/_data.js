@@ -1,34 +1,40 @@
 export const questionBank = {
   unanswered: [
     {
-      user: "Kent Wong",
+      qid: 1,
+      author: "Kent Wong",
       avatar: "gent1.png",
       question: "become a superhero",
     },
     {
-      user: "Ranger Liao",
+      qid: 2,
+      author: "Ranger Liao",
       avatar: "gent2.png",
       question: "be telekinetic",
     },
     {
-      user: "Carrie Guo",
+      qid: 3,
+      author: "Carrie Guo",
       avatar: "lady1.png",
       question: "be a front-end developer",
     },
   ],
   answered: [
     {
-      user: "Melanie Sun",
+      qid: 4,
+      author: "Melanie Sun",
       avatar: "lady2.png",
       question: "find $50 yourself",
     },
     {
-      user: "Tom Hank",
+      qid: 5,
+      author: "Tom Hank",
       avatar: "gent3.png",
       question: "write JavaScript",
     },
     {
-      user: "Shay Christ",
+      qid: 6,
+      author: "Shay Christ",
       avatar: "lady3.png",
       question: "have horrible short term memory",
     },
@@ -36,15 +42,15 @@ export const questionBank = {
 };
 
 export const questionDetails = {
-  qid: 2,
+  qid: 1,
   author: "Kent Wong",
-  avatar: "gent4.png",
+  avatar: "gent1.png",
   optionOne: {
     votes: ["rangerliao", "carrieguo"],
-    text: "Go out to dinner and the cinema.",
+    text: "Become a superhero.",
   },
   optionTwo: {
     votes: ["harley"],
-    text: "Netflix and chill.",
+    text: "Become a supervillan.",
   },
 };

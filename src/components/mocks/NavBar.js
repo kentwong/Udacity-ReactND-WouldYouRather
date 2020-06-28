@@ -9,7 +9,7 @@ import {
   Container,
 } from "semantic-ui-react";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   handleLogout = (e) => {
     e.preventDefault();
     this.props.onLogout();
@@ -51,7 +51,7 @@ export default class NavBar extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Image
-                  src="images/avatars/gent2.png"
+                  src="/images/avatars/gent2.png"
                   avatar
                   spaced="right"
                   verticalAlign="bottom"
@@ -82,3 +82,5 @@ export default class NavBar extends Component {
     );
   }
 }
+
+export default withRouter(NavBar);

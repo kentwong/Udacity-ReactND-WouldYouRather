@@ -16,36 +16,29 @@ export class PollResult extends Component {
 
   render() {
     const { optionOne, optionTwo } = this.props;
-    // console.log('this.props', this.props);
 
     return (
       <Fragment>
         <Header as="h3">Results:</Header>
-        <Segment color="green" style={{ backgroundColor: "honeydew" }}>
-          <Label color="orange" ribbon="right" className="vote">
-            <Icon name="check circle outline" size="big" className="compact" />
-            <div style={{ float: "right" }}>
-              Your
-              <br />
-              Vote
-            </div>
+        <Segment style={{ backgroundColor: "honeydew" }}>
+          <Label color="orange" ribbon="right">
+            <Icon name="star" className="compact" />
+            Your Vote
           </Label>
           <p style={{ fontWeight: "bold" }}>{optionOne.text}</p>
-          <Progress percent={((2 / 3) * 100).toFixed(2)} progress color="green">
+          <Progress percent={((2 / 3) * 100).toFixed(1)} progress color="green">
             2 out of 3 votes
           </Progress>
         </Segment>
-        <Segment color="grey" style={{ backgroundColor: "#f4f4f4" }}>
+        <Segment style={{ backgroundColor: "#f4f4f4" }}>
           <p style={{ fontWeight: "bold" }}>{optionTwo.text}</p>
-          <Progress percent={((1 / 3) * 100).toFixed(2)} progress>
+          <Progress percent={((1 / 3) * 100).toFixed(1)} progress>
             1 out of 3 votes
           </Progress>
         </Segment>
-        {/* <Form.Field> */}
-        <Button size="tiny" floated="right" onClick={this.handleClick}>
+        <Button size="tiny" floated="left" onClick={this.handleClick}>
           Back
         </Button>
-        {/* </Form.Field> */}
       </Fragment>
     );
   }

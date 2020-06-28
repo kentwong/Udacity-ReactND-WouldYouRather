@@ -13,13 +13,18 @@ class Home extends Component {
   }
 }
 
-const panes = [
+const panes = (props) => [
   {
     menuItem: "Unanswered",
     render: () => (
       <Tab.Pane>
         {questionBank.unanswered.map((question) => (
-          <QuestionOverview key={question.user} {...question} />
+          <QuestionOverview
+            key={question.qid}
+            {...question}
+            unanswered={true}
+            {...props}
+          />
         ))}
       </Tab.Pane>
     ),
@@ -29,7 +34,12 @@ const panes = [
     render: () => (
       <Tab.Pane>
         {questionBank.answered.map((question) => (
-          <QuestionOverview key={question.user} {...question} />
+          <QuestionOverview
+            key={question.qid}
+            {...question}
+            unanswered={false}
+            {...props}
+          />
         ))}
       </Tab.Pane>
     ),
@@ -38,7 +48,7 @@ const panes = [
 
 class Tabs extends Component {
   render() {
-    return <Tab panes={panes} className="tab" />;
+    return <Tab panes={panes(this.props)} className="tab" />;
   }
 }
 
