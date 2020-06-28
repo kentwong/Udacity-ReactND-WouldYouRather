@@ -6,7 +6,6 @@ import NewQuestion from "./mocks/NewQuestion";
 import LeaderBoard from "./mocks/LeaderBoard";
 import Error404 from "./mocks/Error404";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
 import { Grid } from "semantic-ui-react";
 import { questionDetails } from "./mocks/_data";
 import PollContainer from "./mocks/PollContainer";
