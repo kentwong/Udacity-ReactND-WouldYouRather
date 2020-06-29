@@ -80,10 +80,10 @@ export const leaderboardData = [
 ];
 
 export const users = {
-  sarahedo: {
-    id: "sarahedo",
-    name: "Sarah Edo",
-    // avatarURL: ,
+  kentwong: {
+    id: "kentwong",
+    name: "Kent Wong",
+    avatarURL: "/images/avatars/gent1.png",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -92,20 +92,20 @@ export const users = {
     },
     questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
   },
-  tylermcginnis: {
-    id: "tylermcginnis",
-    name: "Tyler McGinnis",
-    // avatarURL: ,
+  rangerliao: {
+    id: "rangerliao",
+    name: "Ranger Liao",
+    avatarURL: "/images/avatars/gent2.png",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo",
     },
     questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
   },
-  johndoe: {
-    id: "johndoe",
-    name: "John Doe",
-    // avatarURL: ,
+  carrieguo: {
+    id: "carrieguo",
+    name: "Carrie Guo",
+    avatarURL: "./images/avatars/lady1.png",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",

@@ -14,11 +14,13 @@ class App extends Component {
   state = {
     isLoggedIn: false,
     showPage: false,
+    user: "",
   };
 
-  handleLogin = () => {
+  handleLogin = (user) => {
     this.setState((prevState) => ({
       isLoggedIn: !prevState.isLoggedIn,
+      user,
     }));
   };
 
@@ -34,7 +36,7 @@ class App extends Component {
         <div className="App">
           {this.state.isLoggedIn === true ? (
             <Fragment>
-              <NavBar onLogout={this.handleLogin} />
+              <NavBar onLogout={this.handleLogin} user={this.state.user} />
               <Grid padded centered>
                 <Grid.Row>
                   <Grid.Column style={{ maxWidth: 600 }}>
@@ -47,7 +49,17 @@ class App extends Component {
               </Grid>
             </Fragment>
           ) : (
-            <Route render={() => <Login onLogin={this.handleLogin} />} />
+            <Route
+              render={() => (
+                <Grid padded centered>
+                  <Grid.Row>
+                    <Grid.Column style={{ maxWidth: 600 }}>
+                      <Login onLogin={this.handleLogin} />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              )}
+            />
           )}
         </div>
       </Router>
