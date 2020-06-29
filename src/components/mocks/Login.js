@@ -16,7 +16,7 @@ class Login extends Component {
     this.setState({ value });
   };
 
-  handleClick = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.onLogin(this.state.value);
   };
@@ -31,6 +31,8 @@ class Login extends Component {
   };
 
   render() {
+    const { value } = this.state;
+    const disabled = value === "" ? true : false;
     return (
       <Fragment>
         <Segment.Group>
@@ -62,10 +64,16 @@ class Login extends Component {
                     selection
                     scrolling
                     options={this.userDropdownData()}
+                    value={value}
                     onChange={this.onChange}
                     required
                   />
-                  <Form.Button content="Sign In" positive fluid />
+                  <Form.Button
+                    content="Sign In"
+                    positive
+                    fluid
+                    disabled={disabled}
+                  />
                 </Form>
               </Grid.Column>
             </Grid.Row>

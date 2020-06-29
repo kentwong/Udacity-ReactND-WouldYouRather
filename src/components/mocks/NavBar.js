@@ -8,6 +8,7 @@ import {
   Button,
   Container,
 } from "semantic-ui-react";
+import { users } from "./_data";
 
 class NavBar extends Component {
   handleLogout = (e) => {
@@ -16,6 +17,7 @@ class NavBar extends Component {
   };
 
   render() {
+    const { user } = this.props;
     return (
       <Container>
         <Responsive as={Menu} minWidth={601} pointing secondary>
@@ -25,9 +27,9 @@ class NavBar extends Component {
           <Menu.Menu position="right">
             <Menu.Item>
               <span>
-                Hello, Kent Wong
+                Hello, {users[user].name}
                 <Image
-                  src="images/avatars/gent2.png"
+                  src={users[user].avatarURL}
                   avatar
                   spaced="left"
                   verticalAlign="bottom"
@@ -51,12 +53,12 @@ class NavBar extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Image
-                  src="/images/avatars/gent2.png"
+                  src={users[user].avatarURL}
                   avatar
                   spaced="right"
                   verticalAlign="bottom"
                 />
-                Hello, Kent Wong
+                Hello, {users[user].name}
                 <Button
                   content="Logout"
                   labelPosition="right"
