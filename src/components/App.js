@@ -17,39 +17,37 @@ class App extends Component {
     this.props.handleData();
   }
 
-  state = {
-    isLoggedIn: false,
-    showPage: false,
-    user: "",
-  };
+  // state = {
+  //   isLoggedIn: false,
+  //   showPage: false,
+  //   user: "",
+  // };
 
-  handleLogin = (user) => {
-    this.setState((prevState) => ({
-      isLoggedIn: !prevState.isLoggedIn,
-      user,
-    }));
-  };
+  // handleLogin = (user) => {
+  //   this.setState((prevState) => ({
+  //     isLoggedIn: !prevState.isLoggedIn,
+  //     user,
+  //   }));
+  // };
 
-  setPage = (showPage) => {
-    this.setState({
-      showPage: showPage,
-    });
-  };
+  // setPage = (showPage) => {
+  //   this.setState({
+  //     showPage: showPage,
+  //   });
+  // };
 
   render() {
+    const { loggedUser } = this.props;
     return (
       <Router>
         <div className="App">
-          {this.state.isLoggedIn === true ? (
+          {loggedUser === !null ? (
             <Fragment>
-              <NavBar onLogout={this.handleLogin} user={this.state.user} />
+              <NavBar />
               <Grid padded centered>
                 <Grid.Row>
                   <Grid.Column style={{ maxWidth: 600 }}>
-                    <AppRoutes
-                      setPage={this.setPage}
-                      showPage={this.state.showPage}
-                    />
+                    <Route exact path="/" component={Home} />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -60,7 +58,7 @@ class App extends Component {
                 <Grid padded centered>
                   <Grid.Row>
                     <Grid.Column style={{ maxWidth: 600 }}>
-                      <Login onLogin={this.handleLogin} />
+                      <Login />
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
@@ -73,19 +71,24 @@ class App extends Component {
   }
 }
 
-const AppRoutes = (props) => (
-  <Switch>
-    <Route exact path="/" render={() => <Home onSetPage={props.setPage} />} />
-    <Route
-      path="/questions/:question_id"
-      render={() => (
-        <PollContainer {...questionDetails} showPage={props.showPage} />
-      )}
-    />
-    <Route path="/add" component={NewQuestion} />
-    <Route path="/leaderboard" component={LeaderBoard} />
-    <Route component={Error404} />
-  </Switch>
-);
+// const AppRoutes = (props) => (
+//   <Switch>
+//     <Route exact path="/" render={() => <Home onSetPage={props.setPage} />} />
+//     <Route
+//       path="/questions/:question_id"
+//       render={() => (
+//         <PollContainer {...questionDetails} showPage={props.showPage} />
+//       )}
+//     />
+//     <Route path="/add" component={NewQuestion} />
+//     <Route path="/leaderboard" component={LeaderBoard} />
+//     <Route component={Error404} />
+//   </Switch>
+// );
 
-export default connect(null, { handleData })(App);
+function mapStateToProps({ loggedUser }) {
+  return {
+    loggedUser,
+  };
+}
+export default connect(mapStateToProps, { handleData })(App);
