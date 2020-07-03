@@ -9,8 +9,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
 import { questionDetails } from "./mocks/_data";
 import PollContainer from "./mocks/PollContainer";
+import { handleData } from "../actions/shared";
+import { connect } from "react-redux";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.handleData();
+  }
+
   state = {
     isLoggedIn: false,
     showPage: false,
@@ -82,4 +88,4 @@ const AppRoutes = (props) => (
   </Switch>
 );
 
-export default App;
+export default connect(null, { handleData })(App);
