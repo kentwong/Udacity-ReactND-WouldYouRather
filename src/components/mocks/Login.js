@@ -1,10 +1,38 @@
 import React, { Component, Fragment } from "react";
+import { PropTypes } from "prop-types";
 import { Header, Segment, Grid, Image, Form } from "semantic-ui-react";
-import { connect } from "react-redux";
-import { setLoggedUser } from "../../actions/loggedUser";
+import { users } from "./_data";
 
 class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired,
+  };
+
+  state = {
+    value: "",
+  };
+
+  onChange = (e, { value }) => {
+    this.setState({ value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onLogin(this.state.value);
+  };
+
+  userDropdownData = () => {
+    return Object.values(users).map((user) => ({
+      key: user.id,
+      text: user.name,
+      value: user.id,
+      image: { avatar: true, src: user.avatarURL },
+    }));
+  };
+
   render() {
+    const { value } = this.state;
+    const disabled = value === "" ? true : false;
     return (
       <Fragment>
         <Segment.Group>
@@ -17,7 +45,7 @@ class Login extends Component {
           <Grid padded textAlign="center">
             <Grid.Row>
               <Grid.Column>
-                <Image src="/images/avatars/avatars.png" centered />
+                <Image src="/images/avatars/avatars.png" />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -29,7 +57,24 @@ class Login extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <ConnectedLoginForm />
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Dropdown
+                    placeholder="Select User"
+                    fluid
+                    selection
+                    scrolling
+                    options={this.userDropdownData()}
+                    value={value}
+                    onChange={this.onChange}
+                    required
+                  />
+                  <Form.Button
+                    content="Sign In"
+                    positive
+                    fluid
+                    disabled={disabled}
+                  />
+                </Form>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -37,65 +82,6 @@ class Login extends Component {
       </Fragment>
     );
   }
-}
-
-class LoginForm extends Component {
-  state = {
-    value: "",
-  };
-
-  onChange = (e, { value }) => {
-    this.setState({ value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { setLoggedUser } = this.props;
-    const loggedUser = this.state.value;
-
-    setLoggedUser(loggedUser);
-  };
-
-  userDropdownData = () => {
-    const { users } = this.props;
-
-    return users.map((user) => ({
-      key: user.id,
-      text: user.name,
-      value: user.id,
-      image: { avatar: true, src: user.avatarURL },
-    }));
-  };
-
-  render() {
-    const { value } = this.state;
-    const disabled = value === "" ? true : false;
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Dropdown
-          placeholder="Select User"
-          fluid
-          selection
-          scrolling
-          options={this.userDropdownData()}
-          value={value}
-          onChange={this.onChange}
-          required
-        />
-        <Form.Button content="Sign In" positive fluid disabled={disabled} />
-      </Form>
-    );
-  }
-}
-
-const ConnectedLoginForm = connect(mapStateToProps, { setLoggedUser })(
-  LoginForm
-);
-
-function mapStateToProps({ users }) {
-  return {
-    users: Object.values(users),
-  };
 }
 
 export default Login;
