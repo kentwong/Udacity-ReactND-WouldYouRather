@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Header, Button } from "semantic-ui-react";
 
-export class QuestionOverview extends Component {
+export class PollTeaser extends Component {
   static propTypes = {
     question: PropTypes.object.isRequired,
     unanswered: PropTypes.bool.isRequired,
@@ -45,4 +45,4 @@ export class QuestionOverview extends Component {
   }
 }
 
-export default QuestionOverview;
+export default PollTeaser;

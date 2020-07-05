@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Tab } from "semantic-ui-react";
-import QuestionCard from "./QuestionCard";
 import { connect } from "react-redux";
+import PollContainer from "./PollContainer";
 
 class Home extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ const panes = (props) => {
       render: () => (
         <Tab.Pane>
           {userQuestionData.unanswered.map((question) => (
-            <QuestionCard
+            <PollContainer
               key={question.id}
               question_id={question.id}
               unanswered={true}
@@ -36,7 +36,7 @@ const panes = (props) => {
       render: () => (
         <Tab.Pane>
           {userQuestionData.answered.map((question) => (
-            <QuestionCard
+            <PollContainer
               key={question.id}
               question_id={question.id}
               unanswered={false}
