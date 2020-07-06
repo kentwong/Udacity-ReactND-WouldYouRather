@@ -2,6 +2,8 @@ import { saveQuestion } from "../utils/api";
 import { addQuestionToUser } from "../actions/users";
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
+export const ADD_ANSWER_TO_QUESTION = "ADD_ANSWER_TO_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
 
 export function getQuestions(questions) {
   return {
@@ -9,18 +11,15 @@ export function getQuestions(questions) {
     questions,
   };
 }
-export const ADD_ANSWER_TO_QUESTION = "ADD_ANSWER_TO_QUESTION";
 
-export function addAnswerToQuestion(loggedUser, qid, answer) {
+export function addAnswerToQuestion(authUser, qid, answer) {
   return {
     type: ADD_ANSWER_TO_QUESTION,
-    loggedUser,
+    authUser,
     qid,
     answer,
   };
 }
-
-export const ADD_QUESTION = "ADD_QUESTION";
 
 function addQuestion(question) {
   return {
