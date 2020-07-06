@@ -75,7 +75,7 @@ export class PollContainer extends Component {
 }
 
 function mapStateToProps(
-  { users, questions, authUser },
+  { users, questions, loggedUser },
   { match, question_id }
 ) {
   let question,
@@ -89,7 +89,7 @@ function mapStateToProps(
   } else {
     const { question_id } = match.params;
     question = questions[question_id];
-    const user = users[authUser];
+    const user = users[loggedUser];
 
     if (question === undefined) {
       badPath = true;

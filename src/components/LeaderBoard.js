@@ -7,7 +7,7 @@ import {
   Label,
   Divider,
 } from "semantic-ui-react";
-import { leaderboardData } from "./_data";
+import { leaderboardData } from "./mocks/_data";
 
 const trophyColor = ["yellow", "grey", "orange"];
 

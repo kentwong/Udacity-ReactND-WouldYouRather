@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   Segment,
   Header,
@@ -9,8 +11,14 @@ import {
   Dimmer,
   Loader,
 } from "semantic-ui-react";
+import { handleSaveQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
+  static propTypes = {
+    loggedUser: PropTypes.string.isRequired,
+    handleSaveQuestion: PropTypes.func.isRequired,
+  };
+
   state = {
     validSubmit: false,
     isLoading: false,
@@ -18,16 +26,16 @@ class NewQuestion extends Component {
     option2: "",
   };
   handleChange = (e) => {
-    console.log(e.target.id);
     this.setState({ [e.target.id]: e.target.value });
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this.state.option1", this.state.option1);
-    console.log("this.state.option2", this.state.option2);
+    const { loggedUser, handleSaveQuestion } = this.props;
+    const { option1, option2 } = this.state;
 
     new Promise((res, rej) => {
       this.setState({ isLoading: true });
+      handleSaveQuestion(option1, option2, loggedUser);
       setTimeout(() => res("success"), 1000);
     }).then(() => {
       this.setState({
@@ -85,4 +93,10 @@ class NewQuestion extends Component {
   }
 }
 
-export default NewQuestion;
+function mapStateToProps({ loggedUser }) {
+  return {
+    loggedUser,
+  };
+}
+
+export default connect(mapStateToProps, { handleSaveQuestion })(NewQuestion);

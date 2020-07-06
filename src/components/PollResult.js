@@ -65,31 +65,23 @@ export class PollResult extends Component {
             Would you rather
           </Header.Subheader>
         </Header>
-        <Segment
-          color={option1.color}
-          style={{ backgroundColor: `${option1.bgColor}` }}
-        >
+        <Segment style={{ backgroundColor: `${option1.bgColor}` }}>
           {userVote === "optionOne" && <YourVoteLabel />}
           <p style={{ fontWeight: "bold" }}>{question.optionOne.text}</p>
           <Progress
             percent={((optionOneVotes / votesTotal) * 100).toFixed(2)}
             progress
-            color={option1.color}
           >
             {optionOneVotes} out of {votesTotal} votes
           </Progress>
         </Segment>
-        <Segment
-          color={option2.color}
-          style={{ backgroundColor: `${option2.bgColor}` }}
-        >
+        <Segment style={{ backgroundColor: `${option2.bgColor}` }}>
           {userVote === "optionTwo" && <YourVoteLabel />}
 
           <p style={{ fontWeight: "bold" }}>{question.optionTwo.text}</p>
           <Progress
             percent={((optionTwoVotes / votesTotal) * 100).toFixed(2)}
             progress
-            color={option2.color}
           >
             {optionTwoVotes} out of {votesTotal} votes
           </Progress>
