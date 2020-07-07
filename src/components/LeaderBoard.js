@@ -7,12 +7,17 @@ import {
   Label,
   Divider,
 } from "semantic-ui-react";
-import { leaderboardData } from "./mocks/_data";
+import PropType from "prop-types";
+import { connect } from "react-redux";
 
 const trophyColor = ["yellow", "grey", "orange"];
 
 export class LeaderBoard extends Component {
+  static propType = {
+    leaderboardData: PropType.array.isRequired,
+  };
   render() {
+    const { leaderboardData } = this.props;
     return (
       <Fragment>
         {leaderboardData.map((user, i) => (
@@ -21,7 +26,7 @@ export class LeaderBoard extends Component {
             <Grid divided padded>
               <Grid.Row>
                 <Grid.Column width={4} verticalAlign="middle">
-                  <Image src={`/images/avatars/${user.avatar}`} />
+                  <Image src={user.avatarURL} />
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Header as="h3" textAlign="left">
@@ -56,4 +61,23 @@ export class LeaderBoard extends Component {
   }
 }
 
-export default LeaderBoard;
+function mapStateToProps({ users }) {
+  const leaderboardData = Object.values(users)
+    .map((user) => ({
+      id: user.id,
+      name: user.name,
+      avatarURL: user.avatarURL,
+      answerCount: Object.values(user.answers).length,
+      questionCount: user.questions.length,
+      total: Object.values(user.answers).length + user.questions.length,
+    }))
+    .sort((a, b) => a.total - b.total)
+    .reverse()
+    .slice(0, 3);
+  console.log("leaderboardData", leaderboardData);
+  return {
+    leaderboardData,
+  };
+}
+
+export default connect(mapStateToProps)(LeaderBoard);
