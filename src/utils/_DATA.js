@@ -33,6 +33,48 @@ let users = {
     },
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
+  nellahastings: {
+    id: "nellahastings",
+    name: "Nella Hastings",
+    avatarURL: "/images/avatars/lady2.png",
+    answers: {},
+    questions: [],
+  },
+  davidgarza: {
+    id: "davidgarza",
+    name: "David Garza",
+    avatarURL: "/images/avatars/gent3.png",
+    answers: {},
+    questions: [],
+  },
+  robbiehaas: {
+    id: "robbiehaas",
+    name: "Robbie Haas",
+    avatarURL: "/images/avatars/lady3.png",
+    answers: {},
+    questions: [],
+  },
+  kelisa: {
+    id: "kelisa",
+    name: "Kelise Shepherd",
+    avatarURL: "/images/avatars/lady4.png",
+    answers: {},
+    questions: [],
+  },
+  mariyah: {
+    id: "mariyah",
+    name: "Mariyah Knott",
+    avatarURL: "/images/avatars/lady5.png",
+    answers: {},
+    questions: [],
+  },
+  martyn: {
+    id: "martyn",
+    name: "Martyn Lambert",
+    avatarURL: "/images/avatars/gent4.png",
+    answers: {},
+    questions: [],
+  },
 };
 
 let questions = {
